@@ -3,7 +3,6 @@
    width: 1200px;
    margin: 0 auto;
    padding: 50px 0px 50px 0px;
-   
 
    grid-template-areas:
       "h h"
@@ -21,5 +20,7 @@
 }
 #root {
    background: linear-gradient(to bottom, #36325d 0%, #251A3A 48.6%, #251A3A 90.62%, #251A3A 10%);
+   min-height: 100vh;
    
+   padding: 0px 0px 0px 0px;
 }
