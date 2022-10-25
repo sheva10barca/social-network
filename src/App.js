@@ -7,8 +7,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App(props) {
-   const { messages, posts, dialogs } = props;
-
    return (
       <BrowserRouter>
          <div className="app-wrapper">
@@ -18,9 +16,12 @@ function App(props) {
                <Routes>
                   <Route
                      path="/dialogs/*"
-                     element={<Dialogs dialogs={dialogs} messages={messages} />}
+                     element={<Dialogs state={props.state.dialogsPage} />}
                   />
-                  <Route path="/profile" element={<Profile posts={posts} />} />
+                  <Route
+                     path="/profile"
+                     element={<Profile state={props.state.profilePage} />}
+                  />
                </Routes>
             </div>
          </div>

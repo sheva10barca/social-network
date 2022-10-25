@@ -5,8 +5,14 @@
    border-radius: 0 0px 0 30px;
 }
 
+.item {
+   padding: 0px 0px 10px 0px;
+}
+
 .item a{
    color: #fff;
+   font-size: 18px;
+   font-weight: bold;
    text-decoration: none;
 }
 

@@ -3,12 +3,27 @@
    grid-template-columns: 2fr 10fr;
 }
 
-.dialogsItems {
-   padding: 10px;
+.dialogItem {
+   padding: 0 0 20px 0;
+   color: #fff;
+   display: grid;
+   grid-template-columns: 50px 1fr;
+}
+
+.dialogItem a {
+   padding: 6px 0px 0px 0px;
+   text-decoration: none;
    color: #fff;
 }
 
-.dialogsItems .active {
+.avatar {
+   
+}
+.avatar img {
+   width: 35px;
+}
+
+.dialogItem .active {
    color: #cc56f3;
 }
 
