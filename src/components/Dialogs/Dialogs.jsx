@@ -1,33 +1,50 @@
 import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {
+   sendMessageCreator,
+   updateNewMessageBodyCreator,
+} from "../../redux/state";
 
 import s from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-   let dialogsElements = props.state.dialogs.map((dialog) => (
-      <DialogItem name={dialog.name} id={dialog.id} />
-   ));
-   let messagesElements = props.state.messages.map((message) => (
-      <Message message={message.message} />
-   ));
+   let state = props.store.getState().dialogsPage;
 
-   let newMsg = React.createRef();
+   let dialogsElements = state.dialogs.map((dialog, i) => (
+      <DialogItem name={dialog.name} id={dialog.id} key={i} />
+   ));
+   let messagesElements = state.messages.map((message, i) => (
+      <Message message={message.message} key={i} />
+   ));
+   let newMessageBody = state.newMessageBody;
 
-   let addMsg = () => {
-      let msg = newMsg.current.value;
-      alert(msg)
-   }
+   let onSendMessageClick = () => {
+      props.store.dispatch(sendMessageCreator());
+   };
+
+   let onNewMessageChange = (e) => {
+      let body = e.target.value;
+      props.store.dispatch(updateNewMessageBodyCreator(body));
+   };
 
    return (
       <div className={s.dialogs}>
          <div className={s.dialogsItems}>{dialogsElements}</div>
-         <div className={s.messages}>{messagesElements}</div>
-         <div>
-            <textarea ref={newMsg}></textarea>
-         </div>
-         <div>
-            <button onClick={addMsg}>add</button>
+         <div className={s.messages}>
+            <div>{messagesElements}</div>
+            <div>
+               <div>
+                  <textarea
+                     value={newMessageBody}
+                     onChange={onNewMessageChange}
+                     placeholder="Enter your message"
+                  ></textarea>
+               </div>
+               <div>
+                  <button onClick={onSendMessageClick}>Send</button>
+               </div>
+            </div>
          </div>
       </div>
    );
