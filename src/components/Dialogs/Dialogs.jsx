@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 import {
    sendMessageCreator,
    updateNewMessageBodyCreator,
-} from "../../redux/state";
+} from "../../redux/dialogs-reducer";
 
 import s from "./Dialogs.module.css";
 
