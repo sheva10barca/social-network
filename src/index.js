@@ -9,20 +9,12 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let rerenderEntireTree = () => {
-   root.render(
-      <React.StrictMode>
-         <BrowserRouter>
-            <Provider store={store}>
-               <App />
-            </Provider>
-         </BrowserRouter>
-      </React.StrictMode>,
-   );
-};
-
-rerenderEntireTree();
-
-store.subscribe(() => {
-   rerenderEntireTree();
-});
+root.render(
+   <React.StrictMode>
+      <BrowserRouter>
+         <Provider store={store}>
+            <App />
+         </Provider>
+      </BrowserRouter>
+   </React.StrictMode>,
+);
