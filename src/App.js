@@ -3,10 +3,11 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { Route, Routes } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from './components/Users/UsersContainer';
 
 import "./App.css";
 
-function App(props) {
+function App() {
    return (
       <div className="app-wrapper">
          <Header />
@@ -15,6 +16,7 @@ function App(props) {
             <Routes>
                <Route path="/dialogs/*" element={<DialogsContainer />} />
                <Route path="/profile" element={<Profile />} />
+               <Route path="/users" element={<UsersContainer />} />
             </Routes>
          </div>
       </div>
