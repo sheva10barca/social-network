@@ -11,7 +11,7 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = 2;
       }
-      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/ + userId`).then((response) => {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then((response) => {
          this.props.setUserProfile(response.data);
       });
    }
@@ -32,8 +32,7 @@ function withRouter(Component) {
       let params = useParams();
       return <Component {...props} router={{ location, navigate, params }} />;
    }
-
    return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, { setUserProfile })(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {setUserProfile}) (withRouter(ProfileContainer));
