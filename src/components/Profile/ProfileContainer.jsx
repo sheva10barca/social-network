@@ -35,4 +35,4 @@ function withRouter(Component) {
    return ComponentWithRouterProp;
 }
 
-export default connect(mapStateToProps, {setUserProfile}) (withRouter(ProfileContainer));
+export default connect(mapStateToProps, { setUserProfile })(withRouter(ProfileContainer));
