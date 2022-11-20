@@ -34,4 +34,4 @@ function withRouter(Component) {
    return ComponentWithRouterProp;
 }
 
-export default compose(connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(connect(mapStateToProps, { getUserProfile }), withRouter)(ProfileContainer);
