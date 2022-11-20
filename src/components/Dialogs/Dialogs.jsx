@@ -1,18 +1,15 @@
 import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import { Navigate } from "react-router-dom";
 
 import s from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
    let state = props.dialogsPage;
 
-   let dialogsElements = state.dialogs.map((dialog, i) => (
-      <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
-   ));
-   let messagesElements = state.messages.map((message, i) => (
-      <Message message={message.message} key={message.id} />
-   ));
+   let dialogsElements = state.dialogs.map((dialog, i) => <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />);
+   let messagesElements = state.messages.map((message, i) => <Message message={message.message} key={message.id} />);
    let newMessageBody = state.newMessageBody;
 
    let onSendMessageClick = () => {
@@ -24,6 +21,8 @@ const Dialogs = (props) => {
       props.updateNewMessageBody(body);
    };
 
+   if (!props.isAuth) return <Navigate to="/login" />;
+
    return (
       <div className={s.dialogs}>
          <div className={s.dialogsItems}>{dialogsElements}</div>
@@ -31,11 +30,7 @@ const Dialogs = (props) => {
             <div>{messagesElements}</div>
             <div>
                <div>
-                  <textarea
-                     value={newMessageBody}
-                     onChange={onNewMessageChange}
-                     placeholder="Enter your message"
-                  ></textarea>
+                  <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder="Enter your message"></textarea>
                </div>
                <div>
                   <button onClick={onSendMessageClick}>Send</button>
