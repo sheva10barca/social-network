@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
          <div className={s.descriptionBlock}>
             <p>{props.profile.fullName}</p>
             <img src={props.profile.photos.large} alt="" />
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
             <p>{props.profile.aboutMe}</p>
          </div>
       </div>
