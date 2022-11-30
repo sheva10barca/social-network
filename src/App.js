@@ -1,20 +1,20 @@
 import React from "react";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 
+import { Route, Routes } from "react-router-dom";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import "./App.css";
 import Preloader from "./components/common/Preloader/Preloader";
 
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 class App extends React.Component {
    componentDidMount() {
