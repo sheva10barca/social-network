@@ -6,15 +6,15 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import store from "./redux/redux-store";
 
 import "./App.css";
 import Preloader from "./components/common/Preloader/Preloader";
-
 
 class App extends React.Component {
    componentDidMount() {
@@ -58,4 +58,16 @@ function withRouter(Component) {
    return ComponentWithRouterProp;
 }
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+
+const SocialNetworkApp = (props) => {
+   return (
+      <BrowserRouter>
+         <Provider store={store}>
+            <AppContainer />
+         </Provider>
+      </BrowserRouter>
+   );
+};
+
+export default SocialNetworkApp;
