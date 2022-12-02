@@ -1,9 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -15,6 +13,9 @@ import store from "./redux/redux-store";
 
 import "./App.css";
 import Preloader from "./components/common/Preloader/Preloader";
+
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 
 class App extends React.Component {
    componentDidMount() {
@@ -30,13 +31,21 @@ class App extends React.Component {
             <HeaderContainer />
             <Navbar />
             <div className="app-wrapper-content">
-               <Routes>
-                  <Route path="/dialogs/*" element={<DialogsContainer />} />
-                  <Route path="/profile/:userId" element={<ProfileContainer />} />
-                  <Route path="/profile/" element={<ProfileContainer />} />
-                  <Route path="/users/" element={<UsersContainer />} />
-                  <Route path="/login/" element={<LoginPage />} />
-               </Routes>
+               <Suspense
+                  fallback={
+                     <div>
+                        <Preloader />
+                     </div>
+                  }
+               >
+                  <Routes>
+                     <Route path="/dialogs/*" element={<DialogsContainer />} />
+                     <Route path="/profile/:userId" element={<ProfileContainer />} />
+                     <Route path="/profile/" element={<ProfileContainer />} />
+                     <Route path="/users/" element={<UsersContainer />} />
+                     <Route path="/login/" element={<LoginPage />} />
+                  </Routes>
+               </Suspense>
             </div>
          </div>
       );
