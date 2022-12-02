@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginPage from "./components/Login/Login";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
 import { connect, Provider } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
@@ -71,11 +71,11 @@ let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp 
 
 const SocialNetworkApp = (props) => {
    return (
-      <BrowserRouter>
+      <HashRouter>
          <Provider store={store}>
             <AppContainer />
          </Provider>
-      </BrowserRouter>
+      </HashRouter>
    );
 };
 
