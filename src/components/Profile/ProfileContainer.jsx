@@ -17,6 +17,7 @@ const ProfileContainer = (props) => {
       }
       props.getUserProfile(userId);
       props.getStatus(userId);
+      // eslint-disable-next-line
    }, [props.router.params.userId]);
    // debugger
 
