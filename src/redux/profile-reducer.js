@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
    switch (action.type) {
       case ADD_POST: {
          let newPost = {
-            id: 6,
+            id: 3,
             message: action.newPostText,
             likesCount: 0,
          };
@@ -67,10 +67,13 @@ export const getStatus = (userId) => async (dispatch) => {
 };
 
 export const updateStatus = (status) => async (dispatch) => {
-   let response = await profileAPI.updateStatus(status);
-
-   if (response.data.resultCode === 0) {
-      dispatch(setStatus(status));
+   try {
+      let response = await profileAPI.updateStatus(status);
+      if (response.data.resultCode === 0) {
+         dispatch(setStatus(status));
+      }
+   } catch (error) {
+      //
    }
 };
 

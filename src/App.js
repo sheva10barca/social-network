@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginPage from "./components/Login/Login";
 
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
 import { connect, Provider } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
@@ -18,8 +18,18 @@ const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 
 class App extends React.Component {
+   catchAllUnhandledErrors = (reason, promise) => {
+      alert("Some error occured");
+      //console.error(promiseRejectionEvent);
+   };
+
    componentDidMount() {
       this.props.initializeApp();
+      window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+   }
+
+   componentWillUnmount() {
+      window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
    }
 
    render() {
@@ -40,10 +50,12 @@ class App extends React.Component {
                >
                   <Routes>
                      <Route path="/dialogs/*" element={<DialogsContainer />} />
-                     <Route path="/profile/:userId" element={<ProfileContainer />} />
                      <Route path="/profile/" element={<ProfileContainer />} />
+                     <Route path="/profile/:userId" element={<ProfileContainer />} />
+                     <Route path="/" element={<Navigate to="/profile" />} />
                      <Route path="/users/" element={<UsersContainer />} />
                      <Route path="/login/" element={<LoginPage />} />
+                     <Route path="*" element={<div>404 NOT FOUND</div>} />
                   </Routes>
                </Suspense>
             </div>
