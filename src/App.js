@@ -7,7 +7,7 @@ import LoginPage from "./components/Login/Login";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
 import { connect, Provider } from "react-redux";
-import { initializeApp } from "./redux/app-reducer";
+import { initializeApp } from "./redux/app-reducer.ts";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import store from "./redux/redux-store";
 
