@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
-import LoginPage from "./components/Login/Login";
+import LoginPage from "./components/Login/Login.tsx";
 
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
