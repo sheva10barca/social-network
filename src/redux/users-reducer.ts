@@ -1,4 +1,5 @@
-import { usersAPI } from "../api/api";
+// @ts-ignore
+import { usersAPI } from "../api/api.ts";
 import { updateObjectInArray } from "../utils/object-helpers";
 import { UserType } from "../types/types";
 import { ThunkAction } from "redux-thunk";
@@ -119,7 +120,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
    isFetching,
    userId,
 });
-
+// eslint-disable-next-line
 type GetStateType = () => AppStateType;
 type DispatchType = Dispatch<ActionsTypes>;
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>;
