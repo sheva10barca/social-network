@@ -13,8 +13,8 @@ import {
    getUsers,
    // @ts-ignore
 } from "../../redux/users-selectors.ts";
-
-import Preloader from "../common/Preloader/Preloader";
+// @ts-ignore
+import Preloader from "../common/Preloader/Preloader.tsx";
 import { compose } from "redux";
 import { UserType } from "../../types/types";
 import { AppStateType } from "../../redux/redux-store";

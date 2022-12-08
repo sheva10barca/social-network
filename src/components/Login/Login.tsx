@@ -12,6 +12,7 @@ import { login } from "../../redux/auth-reducer.ts";
 import { Navigate } from "react-router-dom";
 // @ts-ignore
 import style from "./../common/FormsControls/FormsControls.module.css";
+import { GetStringKeys } from "../common/FormsControls/FormsControls";
 
 type LoginFormOwnProps = {
    captchaUrl: string | null;
@@ -57,7 +58,7 @@ export type LoginFormValuesType = {
    email: string;
 };
 
-type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>;
+type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>;
 
 const Login: React.FC<MapStateProptType & MapDispatchPropsType> = (props) => {
    const onSubmit = (formData: any) => {
