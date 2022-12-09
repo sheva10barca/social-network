@@ -3,11 +3,6 @@ import React, { Suspense } from "react";
 import HeaderContainer from "./components/Header/HeaderContainer.tsx";
 // @ts-ignore
 import Navbar from "./components/Navbar/Navbar.tsx";
-// @ts-ignore
-import UsersContainer from "./components/Users/UsersContainer.tsx";
-// @ts-ignore
-import LoginPage from "./components/Login/Login.tsx";
-
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { compose } from "redux";
 import { connect, Provider } from "react-redux";
@@ -16,11 +11,15 @@ import { initializeApp } from "./redux/app-reducer.ts";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 // @ts-ignore
 import store from "./redux/redux-store.ts";
+import { AppStateType } from "./redux/redux-store";
+// @ts-ignore
+import { UsersPage } from "./components/Users/UsersContainer.tsx";
+// @ts-ignore
+import { LoginPage } from "./components/Login/LoginPage.tsx";
 
 import "./App.css";
 // @ts-ignore
 import Preloader from "./components/common/Preloader/Preloader.tsx";
-import { AppStateType } from "./redux/redux-store";
 
 // @ts-ignore
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx"));
@@ -66,7 +65,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                      <Route path="/profile/" element={<ProfileContainer />} />
                      <Route path="/profile/:userId" element={<ProfileContainer />} />
                      <Route path="/" element={<Navigate to="/profile" />} />
-                     <Route path="/users/" element={<UsersContainer />} />
+                     <Route path="/users/" element={<UsersPage pageTitle={"Самураи"} />} />
                      <Route path="/login/" element={<LoginPage />} />
                      <Route path="*" element={<div>404 NOT FOUND</div>} />
                   </Routes>
