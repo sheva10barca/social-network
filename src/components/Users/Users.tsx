@@ -17,7 +17,7 @@ import {
 } from "../../redux/users-selectors.ts";
 import { useDispatch } from "react-redux";
 // @ts-ignore
-import { FilterType, requestUsers } from "../../redux/users-reducer.ts";
+import { FilterType, requestUsers, follow, unfollow } from "../../redux/users-reducer.ts";
 import { useSearchParams } from "react-router-dom";
 
 type PropsType = {};
@@ -82,10 +82,10 @@ export const Users: FC<PropsType> = (props) => {
    const onFilterChanged = (filter: FilterType) => {
       dispatch(requestUsers(1, pageSize, filter));
    };
-   const follow = (userId: number) => {
+   const followTransition = (userId: number) => {
       dispatch(follow(userId));
    };
-   const unfollow = (userId: number) => {
+   const unfollowTransition = (userId: number) => {
       dispatch(unfollow(userId));
    };
 
@@ -95,7 +95,7 @@ export const Users: FC<PropsType> = (props) => {
          <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalUsersCount} pageSize={pageSize} />
          <div>
             {users.map((u) => (
-               <User user={u} followingInProgress={followingInProgress} key={u.id} unfollow={unfollow} follow={follow} />
+               <User user={u} followingInProgress={followingInProgress} key={u.id} unfollow={unfollowTransition} follow={followTransition} />
             ))}
          </div>
       </div>
