@@ -13,12 +13,8 @@
 .dialogItem a {
    padding: 6px 0px 0px 0px;
    text-decoration: none;
-   color: #fff;
 }
 
-.avatar {
-   
-}
 .avatar img {
    width: 35px;
 }
@@ -29,8 +25,4 @@
 
 .messages {
    padding: 10px;
-}
-
-.messages .message {
-   
 }
