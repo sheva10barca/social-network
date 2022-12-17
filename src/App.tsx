@@ -24,12 +24,12 @@ import Breadcrumb from "antd/es/breadcrumb";
 import Menu, { MenuProps } from "antd/es/menu";
 import { LaptopOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
 
-
-
 // @ts-ignore
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx"));
 // @ts-ignore
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.tsx"));
+// @ts-ignore
+const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage.tsx'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = { initializeApp: () => void };
@@ -102,7 +102,8 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                            <Route path="/profile/:userId" element={<ProfileContainer />} />
                            <Route path="/" element={<Navigate to="/profile" />} />
                            <Route path="/developers" element={<UsersPage pageTitle={"Developers"} />} />
-                           <Route path="/login/" element={<LoginPage />} />
+                           <Route path="/login" element={<LoginPage />} />
+                           <Route path="/chat" element={<ChatPage />} />
                            <Route path="*" element={<div>404 NOT FOUND</div>} />
                         </Routes>
                      </Suspense>

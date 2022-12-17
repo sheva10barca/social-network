@@ -13,6 +13,8 @@ import thunkMiddleware, { ThunkAction } from "redux-thunk";
 import { reducer as formReducer } from "redux-form";
 // @ts-ignore
 import appReducer from "./app-reducer.ts";
+// @ts-ignore
+import chatReducer from "./chat-reducer.ts";
 
 let rootReducer = combineReducers({
    profilePage: profileReducer,
@@ -22,6 +24,7 @@ let rootReducer = combineReducers({
    auth: authReducer,
    form: formReducer,
    app: appReducer,
+   chat: chatReducer,
 });
 
 type RootReducerType = typeof rootReducer; // (globalstate: AppStateType) => AppStateType
